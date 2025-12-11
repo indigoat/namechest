@@ -1,8 +1,10 @@
 import { createRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
-import { AvailabilityResults } from '../components/AvailabilityResults'
+import { ResultsActions } from '../components/ResultsActions'
+import { ResultsGrid } from '../components/ResultsGrid'
 import { ResultsSummary } from '../components/ResultsSummary'
+import { SavedSnapshots } from '../components/SavedSnapshots'
 import { SearchHistory } from '../components/SearchHistory'
 import { UsernameChip } from '../components/UsernameChip'
 import { useAvailabilityCheck } from '../hooks/useAvailabilityCheck'
@@ -82,6 +84,14 @@ function HomePage() {
   const handleSelectHistory = (entry: SearchHistoryEntry) => {
     setInputValue(entry.usernames.join(', '))
     setResults(entry.results)
+  }
+
+  const handleSelectSnapshot = (
+    snapshotResults: AvailabilityCheckResult[],
+    snapshotUsernames: string[],
+  ) => {
+    setInputValue(snapshotUsernames.join(', '))
+    setResults(snapshotResults)
   }
 
   const isSearchDisabled = parsedUsernames.length === 0 || mutation.isPending
@@ -194,9 +204,12 @@ function HomePage() {
       {results.length > 0 && (
         <div className="space-y-6">
           <ResultsSummary results={results} />
-          <AvailabilityResults results={results} />
+          <ResultsActions results={results} usernames={parsedUsernames} />
+          <ResultsGrid results={results} />
         </div>
       )}
+
+      <SavedSnapshots onSelectSnapshot={handleSelectSnapshot} />
 
       <SearchHistory key={historyKey} onSelectHistory={handleSelectHistory} />
     </div>
