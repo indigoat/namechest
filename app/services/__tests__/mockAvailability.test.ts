@@ -1,5 +1,5 @@
-import { checkAvailability } from '../mockAvailability'
 import type { CheckAvailabilityRequest } from '../../models/types'
+import { checkAvailability } from '../mockAvailability'
 
 function assertEqual<T>(actual: T, expected: T, message: string): void {
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {

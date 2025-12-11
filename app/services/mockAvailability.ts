@@ -1,9 +1,9 @@
 import type {
   AvailabilityCheckResult,
-  DomainTLD,
-  SocialPlatform,
   CheckAvailabilityRequest,
   CheckAvailabilityResponse,
+  DomainTLD,
+  SocialPlatform,
 } from '../models/types'
 
 const PLATFORMS: SocialPlatform[] = [
@@ -56,8 +56,6 @@ function getAvailability(username: string, platform: SocialPlatform): boolean {
   if (!username || username.trim().length === 0) {
     return false
   }
-
-  const normalized = username.toLowerCase().trim()
 
   if (isReservedName(username, platform)) {
     return false

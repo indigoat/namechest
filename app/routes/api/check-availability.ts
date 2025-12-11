@@ -1,5 +1,5 @@
-import { checkAvailability } from '../../services/mockAvailability'
 import type { CheckAvailabilityRequest, CheckAvailabilityResponse } from '../../models/types'
+import { checkAvailability } from '../../services/mockAvailability'
 
 export async function handleAvailabilityCheck(
   request: CheckAvailabilityRequest,
