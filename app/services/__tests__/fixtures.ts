@@ -1,5 +1,5 @@
-import { checkAvailability } from '../mockAvailability'
 import type { CheckAvailabilityRequest } from '../../models/types'
+import { checkAvailability } from '../mockAvailability'
 
 export const fixtures = {
   singleUsername: {
