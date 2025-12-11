@@ -53,7 +53,7 @@ export function SavedSnapshots({ onSelectSnapshot }: SavedSnapshotsProps) {
   if (snapshots.length === 0) return null
 
   return (
-    <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-soft">
+    <div className="rounded-2xl border border-brand-border bg-white p-4 shadow-md sm:p-6">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         className="flex w-full items-center justify-between"
@@ -61,7 +61,7 @@ export function SavedSnapshots({ onSelectSnapshot }: SavedSnapshotsProps) {
         aria-expanded={isExpanded}
         aria-label="Toggle saved snapshots"
       >
-        <h2 className="font-brand text-lg font-semibold">
+        <h2 className="font-brand text-base font-semibold sm:text-lg">
           Saved Snapshots ({snapshots.length})
         </h2>
         <svg
@@ -82,7 +82,7 @@ export function SavedSnapshots({ onSelectSnapshot }: SavedSnapshotsProps) {
           {snapshots.map((snapshot) => (
             <div
               key={snapshot.id}
-              className="flex items-center gap-3 rounded-lg border border-brand-border bg-brand-surface p-3"
+              className="flex flex-col gap-3 rounded-lg border border-brand-border bg-brand-surface p-3 sm:flex-row sm:items-center"
             >
               <button
                 onClick={() => handleSelect(snapshot)}

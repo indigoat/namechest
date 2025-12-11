@@ -6,6 +6,7 @@ import { ResultsGrid } from '../components/ResultsGrid'
 import { ResultsSummary } from '../components/ResultsSummary'
 import { SavedSnapshots } from '../components/SavedSnapshots'
 import { SearchHistory } from '../components/SearchHistory'
+import { SkeletonLoader } from '../components/SkeletonLoader'
 import { UsernameChip } from '../components/UsernameChip'
 import { useAvailabilityCheck } from '../hooks/useAvailabilityCheck'
 import { useDebounce } from '../hooks/useDebounce'
@@ -99,16 +100,16 @@ function HomePage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="font-brand text-3xl tracking-tight sm:text-4xl">
+        <h1 className="font-brand text-2xl tracking-tight sm:text-3xl lg:text-4xl">
           Username & Domain Checker
         </h1>
-        <p className="max-w-prose text-brand-muted">
+        <p className="text-sm text-brand-muted sm:max-w-prose sm:text-base">
           Check availability of usernames across social platforms and domains. Enter one or more
           names separated by commas or new lines.
         </p>
       </div>
 
-      <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-soft">
+      <div className="rounded-2xl border border-brand-border bg-white p-4 shadow-md sm:p-6">
         <div className="space-y-4">
           <div>
             <label className="text-sm font-medium" htmlFor="query">
@@ -153,9 +154,9 @@ function HomePage() {
             </div>
           )}
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <button
-              className="inline-flex h-12 items-center justify-center rounded-xl bg-brand-accent px-6 font-medium text-white shadow-soft transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-brand-accent px-6 font-medium text-white shadow-md transition hover:shadow-lg hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
               type="button"
               onClick={handleSearch}
               disabled={isSearchDisabled}
@@ -189,7 +190,7 @@ function HomePage() {
             </button>
 
             {mutation.data && (
-              <span className="text-sm text-brand-muted">
+              <span className="text-xs text-brand-muted sm:text-sm">
                 Response time: {mutation.data.responseTime.toFixed(0)}ms
               </span>
             )}
@@ -201,7 +202,15 @@ function HomePage() {
         </div>
       </div>
 
-      {results.length > 0 && (
+      {mutation.isPending && (
+        <div className="space-y-6" role="status" aria-live="polite" aria-label="Loading results">
+          <SkeletonLoader variant="summary" />
+          <div className="h-16 animate-pulse rounded-xl bg-white" />
+          <SkeletonLoader variant="card" count={parsedUsernames.length} />
+        </div>
+      )}
+
+      {!mutation.isPending && results.length > 0 && (
         <div className="space-y-6">
           <ResultsSummary results={results} />
           <ResultsActions results={results} usernames={parsedUsernames} />
