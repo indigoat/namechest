@@ -1,0 +1,11 @@
+npm warn Unknown env config "python". This will stop working in the next major version of npm.
+
+> namecheck@0.0.0 dev
+> vite --host
+
+
+  VITE v5.4.21  ready in 277 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.16.53.7:3000/
+  ➜  press h + enter to show help
