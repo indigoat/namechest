@@ -21,7 +21,7 @@ export function ResultsGrid({ results, onlyAvailable = false }: ResultsGridProps
   return (
     <div className="space-y-4">
       {/* Controls */}
-      <div className="flex flex-wrap items-center gap-3 rounded-xl border border-brand-border bg-white p-4">
+      <div className="flex flex-col gap-3 rounded-xl border border-brand-border bg-white p-4 shadow-md sm:flex-row sm:flex-wrap sm:items-center">
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode('grid')}
@@ -60,9 +60,9 @@ export function ResultsGrid({ results, onlyAvailable = false }: ResultsGridProps
           </button>
         </div>
 
-        <div className="border-l border-brand-border" />
+        <div className="hidden border-l border-brand-border sm:block" />
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setGroupMode('combined')}
             className={`rounded-lg px-3 py-2 text-xs font-medium transition ${
@@ -104,9 +104,9 @@ export function ResultsGrid({ results, onlyAvailable = false }: ResultsGridProps
           </button>
         </div>
 
-        <div className="border-l border-brand-border" />
+        <div className="hidden border-l border-brand-border sm:block" />
 
-        <label className="flex items-center gap-2 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2">
           <input
             type="checkbox"
             checked={showOnlyAvailable}
@@ -192,13 +192,13 @@ function ResultCard({ result, groupMode, showOnlyAvailable }: ResultCardProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-soft">
-      <h3 className="mb-4 font-brand text-xl font-semibold">{result.username}</h3>
+    <div className="rounded-2xl border border-brand-border bg-white p-4 shadow-md transition-shadow hover:shadow-lg sm:p-6">
+      <h3 className="mb-4 font-brand text-lg font-semibold sm:text-xl">{result.username}</h3>
 
       <div className="space-y-4">
         {shouldShowPlatforms && filteredPlatforms.length > 0 && (
           <div>
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-brand-muted">
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand-muted sm:text-sm">
               Social Platforms
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -215,7 +215,7 @@ function ResultCard({ result, groupMode, showOnlyAvailable }: ResultCardProps) {
 
         {shouldShowDomains && filteredDomains.length > 0 && (
           <div>
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-brand-muted">
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand-muted sm:text-sm">
               Domains
             </h4>
             <div className="flex flex-wrap gap-2">

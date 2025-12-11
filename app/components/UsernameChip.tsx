@@ -5,12 +5,12 @@ interface UsernameChipProps {
 
 export function UsernameChip({ username, onRemove }: UsernameChipProps) {
   return (
-    <div className="inline-flex items-center gap-1.5 rounded-lg bg-brand-accent/10 px-3 py-1.5 text-sm font-medium text-brand-accent">
-      <span>{username}</span>
+    <div className="inline-flex items-center gap-1.5 rounded-lg bg-brand-accent/10 px-2.5 py-1.5 text-xs font-medium text-brand-accent shadow-sm ring-1 ring-brand-accent/20 transition-shadow hover:shadow-md sm:px-3 sm:text-sm">
+      <span className="break-all">{username}</span>
       {onRemove && (
         <button
           onClick={() => onRemove(username)}
-          className="inline-flex h-4 w-4 items-center justify-center rounded-full hover:bg-brand-accent/20"
+          className="inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full transition-colors hover:bg-brand-accent/20"
           type="button"
           aria-label={`Remove ${username}`}
         >

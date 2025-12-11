@@ -7,10 +7,10 @@ interface StatusBadgeProps {
 export function StatusBadge({ isAvailable, label, className = '' }: StatusBadgeProps) {
   return (
     <div
-      className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium ${
+      className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium shadow-sm transition-all hover:shadow-md sm:text-sm ${
         isAvailable
-          ? 'bg-green-50 text-green-700'
-          : 'bg-red-50 text-red-700'
+          ? 'bg-green-50 text-green-800 ring-1 ring-green-200'
+          : 'bg-red-50 text-red-800 ring-1 ring-red-200'
       } ${className}`}
       aria-label={`${label}: ${isAvailable ? 'available' : 'taken'}`}
       role="status"

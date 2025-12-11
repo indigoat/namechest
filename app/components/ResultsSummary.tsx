@@ -33,25 +33,37 @@ export function ResultsSummary({ results }: ResultsSummaryProps) {
   const takenDomains = totalDomains - availableDomains
 
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-      <div className="rounded-xl border border-brand-border bg-white p-4">
-        <div className="text-2xl font-bold text-brand-accent">{results.length}</div>
-        <div className="mt-1 text-sm text-brand-muted">Username{results.length !== 1 ? 's' : ''} checked</div>
-      </div>
-      
-      <div className="rounded-xl border border-brand-border bg-white p-4">
-        <div className="text-2xl font-bold text-green-600">{availablePlatforms}</div>
-        <div className="mt-1 text-sm text-brand-muted">Platform{availablePlatforms !== 1 ? 's' : ''} available</div>
-      </div>
-      
-      <div className="rounded-xl border border-brand-border bg-white p-4">
-        <div className="text-2xl font-bold text-green-600">{availableDomains}</div>
-        <div className="mt-1 text-sm text-brand-muted">Domain{availableDomains !== 1 ? 's' : ''} available</div>
-      </div>
-      
-      <div className="rounded-xl border border-brand-border bg-white p-4">
-        <div className="text-2xl font-bold text-red-600">{takenPlatforms + takenDomains}</div>
-        <div className="mt-1 text-sm text-brand-muted">Total taken</div>
+    <div 
+      className="sticky top-[52px] z-10 -mx-4 bg-gradient-to-b from-[#f7f7fb] via-[#f7f7fb] to-transparent px-4 pb-4 pt-2 backdrop-blur-sm sm:-mx-0 sm:top-16 sm:px-0"
+      role="region"
+      aria-label="Results summary"
+    >
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+        <div className="rounded-xl border border-brand-border bg-white p-3 shadow-md sm:p-4">
+          <div className="text-xl font-bold text-brand-accent sm:text-2xl">{results.length}</div>
+          <div className="mt-1 text-xs text-brand-muted sm:text-sm">
+            Username{results.length !== 1 ? 's' : ''} checked
+          </div>
+        </div>
+        
+        <div className="rounded-xl border border-brand-border bg-white p-3 shadow-md sm:p-4">
+          <div className="text-xl font-bold text-green-600 sm:text-2xl">{availablePlatforms}</div>
+          <div className="mt-1 text-xs text-brand-muted sm:text-sm">
+            Platform{availablePlatforms !== 1 ? 's' : ''} available
+          </div>
+        </div>
+        
+        <div className="rounded-xl border border-brand-border bg-white p-3 shadow-md sm:p-4">
+          <div className="text-xl font-bold text-green-600 sm:text-2xl">{availableDomains}</div>
+          <div className="mt-1 text-xs text-brand-muted sm:text-sm">
+            Domain{availableDomains !== 1 ? 's' : ''} available
+          </div>
+        </div>
+        
+        <div className="rounded-xl border border-brand-border bg-white p-3 shadow-md sm:p-4">
+          <div className="text-xl font-bold text-red-600 sm:text-2xl">{takenPlatforms + takenDomains}</div>
+          <div className="mt-1 text-xs text-brand-muted sm:text-sm">Total taken</div>
+        </div>
       </div>
     </div>
   )

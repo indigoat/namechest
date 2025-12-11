@@ -21,9 +21,9 @@ export function SearchHistory({ onSelectHistory }: SearchHistoryProps) {
   const displayedHistory = isExpanded ? history : history.slice(0, 5)
 
   return (
-    <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-soft">
+    <div className="rounded-2xl border border-brand-border bg-white p-4 shadow-md sm:p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="font-brand text-lg font-semibold">Search History</h3>
+        <h3 className="font-brand text-base font-semibold sm:text-lg">Search History</h3>
         <button
           onClick={handleClear}
           className="text-sm text-brand-muted transition hover:text-red-600"
